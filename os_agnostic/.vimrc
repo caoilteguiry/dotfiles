@@ -7,13 +7,16 @@ set ruler          " list current line number/col number in bottom RHS
 
 " syntax highlighting just gets in the way when using vimdiff, imho
 if v:progname =~ "vimdiff"
-  syntax off
+    syntax off
 else
-  syntax on
+    syntax on
 endif
 
 " Clear highlighting with C-l
 nnoremap <silent> <C-l> :nohls<CR><C-l>
 
 " Include a host-specific file (if it exists!)
-exec ":source ~/.vimrc." . hostname()    
+try
+    exec ":source ~/.vimrc." . hostname()    
+catch
+endtry
