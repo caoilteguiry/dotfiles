@@ -144,3 +144,7 @@ alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'  # 
 alias random_password="egrep -ioam1 '[a-z0-9]{8}' /dev/urandom"  # pseudo-random password
 alias vimdiff_empty='vimdiff <(echo) <(echo)'  # handy for debugging
 
+# disable ctrl+d accidental closing of terminal 
+set -o ignoreeof
+# avoid accidental file overwrites
+set -o noclobber
