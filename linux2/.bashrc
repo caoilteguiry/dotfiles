@@ -208,3 +208,43 @@ function compare_dirs()
     echo -e $usage
   fi
 }
+
+
+
+vimdiff_slices()
+{
+  local usage="Usage: vimdiff_slices [[START-LINE END-LINE FILE] ...]"  # not sure about this "recurring" syntax, oh well
+  num_args=$#
+  if [ $((num_args%3)) -ne 0 -o $((num_args)) -eq 0 ]
+  then
+    echo "Invalid number of args (number of args must be a positive factor of 3)"
+    echo $usage 
+    return
+  fi
+  i=1  # index-counter
+  command="vimdiff"  
+  for arg in ${@}
+  do
+    case $((i%3)) in 
+      1)
+        # TODO: check isNum
+        command+=" <( sed -n ${arg},"
+        ;;
+      2)
+        # TODO: check isNum
+        command+="${arg}p "
+        ;;
+      0)
+        if [ ! -r $arg ]
+        then
+          echo "File ${arg} is not readable"
+          echo $usage
+          return;
+        fi
+        command+="${arg} ) "
+        ;;
+    esac
+    i=$((i+1))
+  done
+  eval $command
+}
