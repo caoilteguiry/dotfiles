@@ -162,3 +162,9 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export PYTHONSTARTUP=~/.pythonrc.py
+
+# Functions
+# Subversion pipes to extract modified files, unversioned files and added files
+function getsvnmod() { svn status | grep ^M | awk '{print $2}' | sed -n $1p; }
+function getsvnunversioned() { svn status | grep ^? | awk '{print $2}' | sed -n $1p; }
+function getsvnadd() { svn status | grep ^A | awk '{print $2}' | sed -n $1p; }
