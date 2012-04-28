@@ -110,3 +110,37 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+#####################################
+# DEFAULT .bashrc ends here
+#####################################
+# some more ls aliases
+alias sl=ls  # pretty common typo
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF' 
+alias lias='ls -lias' # long listing with inodes, hidden files, size
+alias lld='ls -l | grep ^d'  # long-list dirs 
+alias lll='ls -l | grep ^l'  # long-list links
+
+# for safety...
+alias cp='cp -iv'
+alias rm='rm -iv'
+alias mv='mv -iv'
+
+# for verbosity...
+alias mkdir='mkdir -v'
+
+# Some svn diff aliases
+alias svndiff='svn diff --diff-cmd svnvimdiff'  
+alias svnmeld='svn diff --diff-cmd=meld'
+
+# rlwrap...
+alias telnet='rlwrap telnet'
+
+# misc...
+alias units='units --verbose'   # no idea why this isn't the default
+alias webshare='python -c "import SimpleHTTPServer;SimpleHTTPServer.test()"'  # quickly share files in cwd
+alias random_password="egrep -ioam1 '[a-z0-9]{8}' /dev/urandom"  # pseudo-random password
+alias vimdiff_empty='vimdiff <(echo) <(echo)'  # handy for debugging
+
