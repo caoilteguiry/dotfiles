@@ -172,3 +172,15 @@ function unixtime2datetime()
 { 
   python -c 'from datetime import datetime; print datetime.fromtimestamp('$1')'; 
 }
+
+function wgetdiff()
+{
+  local usage="wgetdiff <url> <url>"
+  if [ $# -ne 2 ]
+  then
+    echo "Invalid number of args"
+    echo $usage
+    return
+  fi
+  vimdiff <(wget "$1" -O -) <(wget $2 -O -)
+}
