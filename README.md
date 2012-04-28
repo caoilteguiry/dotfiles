@@ -1,3 +1,5 @@
+#dotfiles
+
 A collection of my Unix configuration files (colloquially known as 'dotfiles').
 
 Files are categorised as follows:
