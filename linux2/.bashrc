@@ -184,3 +184,27 @@ function wgetdiff()
   fi
   vimdiff <(wget "$1" -O -) <(wget $2 -O -)
 }
+
+
+
+function compare_dirs()
+{
+  local usage="Usage: compare_dirs [options] dir1 dir2\n"
+  usage+="Options:"
+  usage+="\n--non-recursive, -nr"
+  usage+="\n\tDo a non-recursive comparison"
+  if [ "--non-recursive" = "${1}" -o "-nr" = "${1}" ]
+  then
+    r=""
+    shift    
+  else
+    r="-R"
+  fi 
+  if [ -d "$1" -a -d "$2" ]; 
+  then 
+    vimdiff <(ls -l ${r} "$1" | awk '{print $5" "$8}') <(ls -l ${r} "$2" | awk '{print $5" "$8}')
+  else
+    echo -e "Syntax error." 
+    echo -e $usage
+  fi
+}
