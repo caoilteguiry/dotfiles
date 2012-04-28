@@ -168,3 +168,7 @@ export PYTHONSTARTUP=~/.pythonrc.py
 function getsvnmod() { svn status | grep ^M | awk '{print $2}' | sed -n $1p; }
 function getsvnunversioned() { svn status | grep ^? | awk '{print $2}' | sed -n $1p; }
 function getsvnadd() { svn status | grep ^A | awk '{print $2}' | sed -n $1p; }
+function unixtime2datetime()
+{ 
+  python -c 'from datetime import datetime; print datetime.fromtimestamp('$1')'; 
+}
