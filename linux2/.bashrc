@@ -248,3 +248,6 @@ vimdiff_slices()
   done
   eval $command
 }
+
+# INCLUDE A HOST SPECIFIC bashrc file
+. ~/.bashrc.`hostname`
