@@ -4,6 +4,7 @@ set expandtab      " insert spaces for tabs...
 set tabstop=4      " ...specifically 4 spaces
 set hlsearch       " highlight search results
 set ruler          " list current line number/col number in bottom RHS
+set cursorline     " highlight current line
 
 " syntax highlighting just gets in the way when using vimdiff, imho
 if v:progname =~ "vimdiff"
