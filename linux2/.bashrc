@@ -114,6 +114,10 @@ fi
 #####################################
 # DEFAULT .bashrc ends here
 #####################################
+# If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
+
+
 # some more ls aliases
 alias sl=ls  # pretty common typo
 alias ll='ls -l'
