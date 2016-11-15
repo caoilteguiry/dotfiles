@@ -136,6 +136,11 @@ alias mv='mv -iv'
 alias mkdir='mkdir -v'
 
 # Some svn diff aliases
+# NB: requires creating a sh script somewhere in $PATH called
+# svnvimdiff with the following contents:
+# #!/bin/bash
+# vimdiff $6 $7
+# TODO: make this more easily automatable
 alias svndiff='svn diff --diff-cmd svnvimdiff'  
 alias svnmeld='svn diff --diff-cmd=meld'
 
